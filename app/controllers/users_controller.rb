@@ -10,12 +10,22 @@ class UsersController < ApplicationController
 
   	def create
     	@user = User.new(user_params)
+    	@user.gender = params[:theme]
     	if @user.save
       		redirect_to user_url(@user)
     	else
       		render 'new'
     	end
   	end
+  	
+  	def append_gender 
+  		@user = User.(params[i][id])
+  		@user.gender 
+  		@user.save
+  		redirect_to users
+  	end
+  	
+  	
   	private
     
 	    def user_params

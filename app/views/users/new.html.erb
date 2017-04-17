@@ -38,6 +38,15 @@
             <%= f.label :password_confirmation, "Confirmation" %>
             <%= f.password_field :password_confirmation, class: 'form-control' %>
             
+            <div class="form_row">
+              <label for="theme">gender:</label>
+                <% [ 'male', 'female'].each do |theme| %>
+                <%= radio_button_tag 'theme', theme, @theme == theme %>
+                <%= theme.humanize %>
+                <% end %>
+           </div>
+
+            
             <%= f.submit "Create my account", class: "btn btn-primary" %>
           <% end %>
         </div>

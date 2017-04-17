@@ -36,6 +36,10 @@ module SessionsHelper
 		cookies.delete(:user_id)
 		cookies.delete(:remember_token)
 	end
+	
+	def gen
+		@user.addgender(params[:theme])
+	end
 
 
 end
