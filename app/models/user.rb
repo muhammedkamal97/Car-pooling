@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessor :remember_token
 	before_save   { self.email= email.downcase } 
   	validates :name,  presence: true, length: { maximum: 50 }
   	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
@@ -13,4 +14,24 @@ class User < ActiveRecord::Base
                                                   BCrypt::Engine.cost
     	BCrypt::Password.create(string, cost: cost)
   	end
+    ###############################################################################################
+    #if the user choose to be remembered
+    
+    
+      
+    def remember_database
+      self.remember_token = SecureRandom.urlsafe_base64
+      update_attribute(:remember_digest, User.digest(remember_token))
+    end
+    #the remember_token match the one in the data base or not
+    def authenticated?(given_remember)
+      return false if remember_digest.nil?
+      BCrypt::Password.new(remember_digest) == given_remember
+    end
+    #forget the user to logout
+    def forget
+      update_attribute(:remember_digest, nil)
+    end
+
+
 end

@@ -22,7 +22,7 @@
 		<div class="row">			
 					<div class="form-group">
 						<div class="col-sm-10 col-sm-offset-2">
-						<%= form_for  :session, url:login_path do |f| %>
+						<%= form_for(:session, url: login_path) do |f| %>
 				            <% if @flagLoginError == 1 %>
           						<div class="alert alert-danger"><%= flash[:danger]%></div>
 				            <% end %>
@@ -31,8 +31,13 @@
 				            
 				           <%= f.label :password %>
 				           <%= f.password_field :password %>
+				           <%= f.label :remember_me, class: "checkbox inline" do %>
+        						<%= f.check_box :remember_me %>
+        						<span>Remember me on this computer</span>
+      						<% end %>
 				            
 				           <%= f.submit "Login", class: "btn btn-primary" %>
+
           				<% end %>
           				<%= link_to "Sign up Now" ,signup_path %>
 						</div>
