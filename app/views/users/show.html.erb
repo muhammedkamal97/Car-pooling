@@ -4,7 +4,7 @@
 <%= @user.name %>
 <br>
 <%= link_to("Log out", logout_path , method: :delete) %>
-
+<%= link_to "Setting", edit_user_path(current_user) %>
 
 
 
