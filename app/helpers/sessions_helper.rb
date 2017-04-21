@@ -21,8 +21,9 @@ module SessionsHelper
 	end
 
 	def log_out
-		session[:user_id] = nil
-		@current_user = nil
+		forget(current_user)
+    session.delete(:user_id)
+    @current_user = nil
 	end
 	#remember a user (login without write email or password)
 	def remember(user)

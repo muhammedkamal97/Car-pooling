@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
-  	#before_action :logged_in_user, only: [:edit, :update]
-	#before_action :current_user, only: [:edit, :update]
+  	before_action :logged_in_user, only: [:edit, :update]
+	before_action :current_user, only: [:edit, :update]
 
   
   	def show
@@ -30,8 +30,10 @@ class UsersController < ApplicationController
   		redirect_to users
   	end
   	def edit
+  		@user = User.find(params[:id])
   	end
   	def update
+  		@user = User.find(params[:id])
   		if @user.update_attributes(user_params)
   			flash[:success] = "Profile update"
   			redirect_to @user

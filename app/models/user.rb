@@ -25,10 +25,11 @@ class User < ActiveRecord::Base
       update_attribute(:remember_digest, User.digest(remember_token))
     end
     #the remember_token match the one in the data base or not
-    def authenticated?(given_remember)
-      return false if remember_digest.nil?
-      BCrypt::Password.new(remember_digest) == given_remember
-    end
+    def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
     #forget the user to logout
     def forget
       update_attribute(:remember_digest, nil)
