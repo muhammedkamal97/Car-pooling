@@ -17,7 +17,7 @@ gem 'turbolinks'
 gem 'jbuilder'                
 gem 'sdoc'                
 
-group :development, :test do
+group :development do
   gem 'sqlite3'     
   gem 'byebug'  
   gem 'web-console' 
