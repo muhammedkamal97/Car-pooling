@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-	@flagLoginError = 0
+	
 
   def new
   end
@@ -12,12 +12,10 @@ class SessionsController < ApplicationController
   		log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_to user
-
-
   	else
-  		@flagLoginError = 1
+  		$flagLoginError = 1
   		flash[:danger] = "Invalid Email Or password"
-  		render 'new'
+  		redirect_to signup_path
   	end
   end
 
