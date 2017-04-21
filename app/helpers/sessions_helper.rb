@@ -30,7 +30,11 @@ module SessionsHelper
 		cookies.permanent.signed[:user_id] = user.id
 		cookies.permanent[:remember_token] = user.remember_token
 	end
-
+	
+	def current_user
+		user == current_user
+	end
+	
 	def forget (user)
 		user.forget
 		cookies.delete(:user_id)
@@ -40,6 +44,4 @@ module SessionsHelper
 	def gen
 		@user.addgender(params[:theme])
 	end
-
-
 end
