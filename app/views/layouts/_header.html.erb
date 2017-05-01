@@ -1,5 +1,4 @@
-
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   	<div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1" aria-expanded="false">
@@ -12,7 +11,7 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar1">
       
-      <% if logged_in? %>
+    <% if logged_in? %>
       <ul class="nav navbar-nav navbar-right" >
 
           <li><%= link_to "Users", users_path %></li>
@@ -29,25 +28,26 @@
               </ul>
             </li>
         </ul>
-        <% else %>
+    <% else %>
       <ul class="form-inline navbar-right" >
       <div class="form-group">
             <%= form_for(:session, url: login_path) do |f| %>
               <br>
                     <% if $flagLoginError == 1 %>
-          						<div class="alert-danger">Invalid Email or Password</div>
-          						<% $flagLoginError = 0 %>
-				            <% end %>
-				                <%= f.email_field :email ,class:"form-control" %>
-				                <%= f.password_field :password ,class:"form-control"%>
-				                <%= f.label :remember_me, class: "checkbox inline" do %>
-        						    <%= f.check_box :remember_me %>
-        						    <span>Remember</span>
-				            <%= f.submit "Login", class: "btn btn-primary" %>
+                      <div class="alert-danger">Invalid Email or Password</div>
+                      <% $flagLoginError = 0 %>
+                    <% end %>
+                        <%= f.email_field :email ,class:"form-control" %>
+                        <%= f.password_field :password ,class:"form-control"%>
+                        <%= f.label :remember_me, class: "checkbox inline" do %>
+                        <%= f.check_box :remember_me %>
+                        <span>Remember</span>
+                        <% end %>
+                    <%= f.submit "Login", class: "btn btn-primary" %>
             <% end %>
-	    </div>
-    	<% end %>
+      </div>
     	</ul>
+   <% end %>
     	</div>
     </div>
-	</nav>
+</nav>

@@ -34,11 +34,7 @@ group :test do
 end
 
 group :production do
-<<<<<<< HEAD
-               
-=======
   gem 'pg'             
->>>>>>> 8610d92e80c1e408c06d8a6f0ca831a99fe4a220
   gem 'rails_12factor' 
   gem 'puma'           
 end
