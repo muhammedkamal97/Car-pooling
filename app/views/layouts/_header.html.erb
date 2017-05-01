@@ -33,18 +33,17 @@
       <ul class="form-inline navbar-right" >
       <div class="form-group">
             <%= form_for(:session, url: login_path) do |f| %>
-                <br>
+              <br>
                     <% if $flagLoginError == 1 %>
           						<div class="alert-danger">Invalid Email or Password</div>
           						<% $flagLoginError = 0 %>
 				            <% end %>
-				           <%= f.email_field :email ,class:"form-control" %>
-				           <%= f.password_field :password ,class:"form-control"%>
-				           <%= f.label :remember_me, class: "checkbox inline" do %>
-        						<%= f.check_box :remember_me %>
-        						<span>Remember</span>
-      						<% end %>
-				           <%= f.submit "Login", class: "btn btn-primary" %>
+				                <%= f.email_field :email ,class:"form-control" %>
+				                <%= f.password_field :password ,class:"form-control"%>
+				                <%= f.label :remember_me, class: "checkbox inline" do %>
+        						    <%= f.check_box :remember_me %>
+        						    <span>Remember</span>
+				            <%= f.submit "Login", class: "btn btn-primary" %>
             <% end %>
 	    </div>
     	<% end %>
