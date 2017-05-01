@@ -1,0 +1,29 @@
+<div class="sub-section"></div>
+<div class="sign">
+ <div class="row">
+   <div class="col-lg-4 col-md-5 col-sm-6">
+     <div class="sign-up-container">
+         <h2 class="text-center">edit</h2><br>
+            <%= form_for @user do |f| %>
+              <%= render 'Shared/error_messages', object: f.object %>
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control' %>
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control' %>
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+            <div class="form_row">
+              <label for="theme">gender:</label>
+                <% [ 'male', 'female'].each do |theme| %>
+                <%= radio_button_tag 'theme', theme, @theme == theme %>
+                <%= theme.humanize %>
+                <% end %>
+           </div>
+            <%= f.submit "Confirm", class: "btn btn-primary" %>
+          <% end %>         
+	   </div>
+	  </div>
+	</div>
+</div>

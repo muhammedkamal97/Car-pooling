@@ -1,0 +1,59 @@
+
+<div class="sub-section"></div>
+
+<%= @user.name %>
+<br>
+<%= link_to("Log out", logout_path , method: :delete) %>
+
+
+
+<%= form_for(:location, url: locate_path) do |f| %>
+	
+  <div class="field">
+    <%= f.label :day %>
+    <%= f.text_field :day %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fromAddress %>
+    <%= f.text_field :fromAddress %>
+  </div>
+
+  <div class="field">
+    <%= f.label :from_lat %>
+    <%= f.text_field :from_lat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :from_long %>
+    <%= f.text_field :from_long %>
+  </div>
+
+  <div class="field">
+    <%= f.label :toAddress %>
+    <%= f.text_field :toAddress %>
+  </div>
+
+  <div class="field">
+    <%= f.label :to_lat %>
+    <%= f.text_field :to_lat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :to_long %>
+    <%= f.text_field :to_long %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time %>
+    <%= f.text_field :time %>
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+

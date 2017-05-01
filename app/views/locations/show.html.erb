@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @location.day %>
+</p>
+
+<p>
+  <strong>Fromaddress:</strong>
+  <%= @location.fromAddress %>
+</p>
+
+<p>
+  <strong>From lat:</strong>
+  <%= @location.from_lat %>
+</p>
+
+<p>
+  <strong>From long:</strong>
+  <%= @location.from_long %>
+</p>
+
+<p>
+  <strong>Toaddress:</strong>
+  <%= @location.toAddress %>
+</p>
+
+<p>
+  <strong>To lat:</strong>
+  <%= @location.to_lat %>
+</p>
+
+<p>
+  <strong>To long:</strong>
+  <%= @location.to_long %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @location.time %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @location.user %>
+</p>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.from_lat}%2C#{@location.from_long}" %>
+
+<h1>nearbys locations</h1>  
+<ul>
+<% for location in @location.nearbys(10) %>
+  <li> <%= link_to location.fromAddress, location%>(<%= location.distance.round(2)%> miles)</l>
+<%end%>
+</ul>
+
+
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

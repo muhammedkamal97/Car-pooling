@@ -1,0 +1,62 @@
+<%= form_for(location) do |f| %>
+  <% if location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :day %>
+    <%= f.text_field :day %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fromAddress %>
+    <%= f.text_field :fromAddress %>
+  </div>
+
+  <div class="field">
+    <%= f.label :from_lat %>
+    <%= f.text_field :from_lat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :from_long %>
+    <%= f.text_field :from_long %>
+  </div>
+
+  <div class="field">
+    <%= f.label :toAddress %>
+    <%= f.text_field :toAddress %>
+  </div>
+
+  <div class="field">
+    <%= f.label :to_lat %>
+    <%= f.text_field :to_lat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :to_long %>
+    <%= f.text_field :to_long %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time %>
+    <%= f.text_field :time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
