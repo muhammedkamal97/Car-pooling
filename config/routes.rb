@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :locations
 
-  root 'application#welcome'
+  root 'users#new'
 
   get 'sessions/new'
   
