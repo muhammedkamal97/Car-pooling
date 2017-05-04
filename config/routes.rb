@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
   get  'signup' => 'users#new'
   
-
-
+  get 'pickup' => 'locations#make_request'
+  post 'acceptRequest' => 'locations#accept_request'
+  post 'refuseRequest' => 'locations#refuse_request'
   get    'login'  => 'sessions#new'
   post   'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

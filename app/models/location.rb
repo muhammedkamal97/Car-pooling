@@ -2,6 +2,7 @@ class Location < ApplicationRecord
   #attr_accessor :from_lat, :from_long, :to_lat, :to_long, :fromAddress, :toAddress
   geocoded_by :fromAddress, :latitude  => :from_lat, :longitude => :from_long
   belongs_to :user
+  has_many :notifications, dependent: :destroy
   before_save :geocode_endpoints
 
   private

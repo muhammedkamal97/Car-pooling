@@ -1,11 +1,29 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-
   # GET /locations
   # GET /locations.json
   def index
     @locations = Location.all
   end
+
+  def make_request 
+    location = Location.find(params[:loc])
+    create_notification (location)
+    redirect_to current_user
+  end
+
+  def accept_request
+    notification = Notification.find(params[:respond])
+    notification.update(request: 'accept')
+    redirect_to current_user
+  end
+
+  def refuse_request
+    notification = Notification.find(params[:respond])
+    notification.update(request: 'refused')
+    redirect_to current_user
+  end
+
 
   # GET /locations/1
   # GET /locations/1.json
@@ -19,6 +37,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
+
   end
 
   # POST /locations
@@ -72,5 +91,16 @@ class LocationsController < ApplicationController
       params.require(:location).permit(:day, :fromAddress, :from_lat, 
                                        :from_long, :toAddress, :to_lat,
                                        :to_long, :time)
+    end
+
+    def create_notification (location)
+        dr = location.user_id
+        loc = location.id
+        us = current_user
+        Notification.create(user: us,
+                            drive_user_id: dr,
+                            location_id: loc,
+                            request: 'pickup',
+                            read: false)
     end
 end

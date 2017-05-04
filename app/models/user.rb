@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :locations
+  has_many :notifications, dependent: :destroy
   attr_accessor :remember_token
 	before_save   { self.email= email.downcase } 
   	validates :name,  presence: true, length: { maximum: 50 }
@@ -37,6 +38,4 @@ class User < ActiveRecord::Base
       update_attribute(:remember_digest, nil)
     end
     
-  
-
 end

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170430100935) do
+ActiveRecord::Schema.define(version: 20170504111209) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "day"
@@ -28,8 +27,18 @@ ActiveRecord::Schema.define(version: 20170430100935) do
     t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
-ActiveRecord::Schema.define(version: 20170417045142) do
-
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "drive_user_id"
+    t.integer  "location_id"
+    t.string   "request"
+    t.boolean  "read"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["drive_user_id"], name: "index_notifications_on_drive_user_id"
+    t.index ["location_id"], name: "index_notifications_on_location_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
