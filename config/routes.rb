@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
   
-
+  get 'search' => 'locations#search'
 
   get 'static_pages/Welcome' =>'static_pages#Welcome'
 

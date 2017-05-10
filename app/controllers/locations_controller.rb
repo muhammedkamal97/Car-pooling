@@ -80,6 +80,24 @@ class LocationsController < ApplicationController
     end
   end
 
+  def search
+    location = Location.find_by(fromAddress: params[:search])
+    if location
+      $to_location = location
+      $flag = 1
+      debugger
+      redirect_to location
+    else 
+      location = Location.find_by(toAddress: params[:search])
+      if(location)
+        $to_location = location
+        $flag = 1
+        debugger
+        redirect_to location
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location

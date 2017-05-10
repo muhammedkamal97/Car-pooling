@@ -49,7 +49,9 @@
 <h1>nearbys locations</h1>  
 <ul>
 <% for location in @location.nearbys(10) %>
-  <li> <%= link_to location.fromAddress, location%>(<%= location.distance.round(2)%> miles)</l>
+    <% if(distance(location, $to_location) < 430 ) %>
+      <li> <%= link_to location.fromAddress, location%>(<%= location.distance.round(2)%> miles)</li>
+    <% end %>
 <%end%>
 </ul>
 
