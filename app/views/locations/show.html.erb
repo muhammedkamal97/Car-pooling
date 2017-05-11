@@ -1,3 +1,9 @@
+
+<div class="sub-section"></div>
+<div class="sub-section"></div>
+
+<div class = "map-page">
+  <div class="map-spec">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -6,47 +12,29 @@
 </p>
 
 <p>
-  <strong>Fromaddress:</strong>
+  <strong>From:</strong>
   <%= @location.fromAddress %>
 </p>
 
-<p>
-  <strong>From lat:</strong>
-  <%= @location.from_lat %>
-</p>
 
 <p>
-  <strong>From long:</strong>
-  <%= @location.from_long %>
-</p>
-
-<p>
-  <strong>Toaddress:</strong>
+  <strong>To:</strong>
   <%= @location.toAddress %>
 </p>
 
-<p>
-  <strong>To lat:</strong>
-  <%= @location.to_lat %>
-</p>
-
-<p>
-  <strong>To long:</strong>
-  <%= @location.to_long %>
-</p>
 
 <p>
   <strong>Time:</strong>
   <%= @location.time %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @location.user %>
-</p>
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.from_lat}%2C#{@location.from_long}" %>
 
-<h1>nearbys locations</h1>  
+</div>
+<div class = "container">
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.from_lat}%2C#{@location.from_long}" %>
+</div>
+<div class = "container">
+<h1>Nearby Locations</h1>
 <ul>
 <% for location in @location.nearbys(10) %>
     <% if(distance(location, $to_location) && 
@@ -55,8 +43,10 @@
     <% end %>
 <%end%>
 </ul>
+</div>
 
-
-
+<div class ="edit-back">
 <%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<%= link_to 'Back', locations_path %> 
+</div>
+</div>

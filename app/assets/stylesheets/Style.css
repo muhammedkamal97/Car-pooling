@@ -1,10 +1,16 @@
+.body{
+	background-color: black;
+}
 .sub-section{
-	height: 80px;
-	background-color: white;
+	height: 20px;
+	background-color: black;
 
 }
 h3{
 	font-family:'Rancho',cursive;
+}
+.navbar-inverse{
+	color: white;
 }
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
 	background-color: #00dac8
@@ -141,7 +147,6 @@ h3{
 	text-shadow: 0 3px 3px black;
 }
 .our-team{
-	margin-top: 10px;
 	background: url(../assets/team.jpg) no-repeat center center fixed;
 	background-size: cover;
 	width: 100%;
@@ -168,4 +173,65 @@ h3{
 }
 body{
 	margin-bottom: 20px;
+}
+
+.user-name{
+	  padding-left: 50px;
+  padding-right: 20px;
+  padding-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 24px;
+	color: white;
+	 font-family: 'Rancho',cursive;
+}
+.new-place{
+	padding-left: 50px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 18px;
+	color: black;
+}
+.user{
+	background: url(../assets/team.jpg) no-repeat center center fixed;
+	background-size: cover;
+	width: 100%;
+	color: #FFF;
+}
+
+.map-page{
+	
+		background: url(../assets/map.jpg) no-repeat center center fixed;
+	  background-size: cover;
+	width: 100%;
+	color: white;
+
+}
+.map-spec{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.edit-back{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+	font-size:30px;
+}
+
+.container h1{
+		 font-family: 'Rancho',cursive;
+}
+
+.map-spec p{
+	  font-size: 20px;
+	  padding-top:5px;
+	  font-family: 'Rancho',cursive;
+
 }
