@@ -21,15 +21,14 @@ pre {
 }
 
 a {
-  color: #000;
+  color: white;
 
   &:visited {
-    color: #666;
+    color:#00dac8;
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: white;
   }
 }
 
@@ -79,7 +78,7 @@ div {
   }
 
   ul li {
-    font-size: 12px;
+    font-size: 18px;
     list-style: square;
   }
 }

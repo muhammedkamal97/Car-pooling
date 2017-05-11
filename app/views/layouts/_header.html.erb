@@ -13,9 +13,17 @@
       
     <% if logged_in? %>
       <ul class="nav navbar-nav navbar-right" >
+        <li>
+            <div class = "user-name">
+                <%= link_to "#{current_user.name}", current_user %>    
+            </div>
+            </li>
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Notification <%= current_user.notifications.count %><b class="caret"></b>
+                Notification
+                <% if current_user.notifications %>
+                <%= current_user.notifications.count %>
+                <% end %><b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                   <% current_user.notifications.each do |notification| %>

@@ -1,48 +1,37 @@
 
 <div class="sub-section"></div>
+<div class="sub-section"></div>
+<div class="sub-section"></div>
 
-<%= @user.name %>
-<br>
-<%= link_to("Log out", logout_path , method: :delete) %>
-
-
-
+<div class="user">
 
 <%= form_for(:location, url: locate_path) do |f| %>
-	
+<div class="new-place">
   <div class="field">
     <%= f.label :day %>
-    <%= f.text_field :day %>
+    &emsp;
+    <select>
+  <option value="Saturday">Saturday</option>
+  <option value="Sunday">Sunday</option>
+  <option value="Monday">Monday</option>
+  <option value="Tuesday">Tuesday</option>
+  <option value="Wednesday">Wednesday</option>
+  <option value="Thursday">Thursday</option>
+  <option value="Friday">Friday</option>
+
+</select>
+    
   </div>
 
   <div class="field">
-    <%= f.label :fromAddress %>
-    <%= f.text_field :fromAddress %>
+    <%= f.label :From %>
+    <%= f.text_field :From %>
   </div>
-
+  
   <div class="field">
-    <%= f.label :from_lat %>
-    <%= f.text_field :from_lat %>
-  </div>
-
-  <div class="field">
-    <%= f.label :from_long %>
-    <%= f.text_field :from_long %>
-  </div>
-
-  <div class="field">
-    <%= f.label :toAddress %>
-    <%= f.text_field :toAddress %>
-  </div>
-
-  <div class="field">
-    <%= f.label :to_lat %>
-    <%= f.text_field :to_lat %>
-  </div>
-
-  <div class="field">
-    <%= f.label :to_long %>
-    <%= f.text_field :to_long %>
+    <%= f.label :To %>
+    &emsp;
+    <%= f.text_field :To %>
   </div>
 
   <div class="field">
@@ -50,9 +39,10 @@
     <%= f.text_field :time %>
   </div>
 
-  
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Location" %>
+  </div>
+  </div>
   </div>
 <% end %>
-
