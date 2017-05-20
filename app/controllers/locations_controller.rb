@@ -53,6 +53,9 @@ class LocationsController < ApplicationController
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
       else
+        $checkTheLocation = 1
+        redirect_to current_user
+        return
         format.html { render :new }
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end

@@ -30,7 +30,7 @@
                   <% Notification.where(drive_user: current_user,read: false).or(Notification.where(user: current_user,read: false)).last(5).each do |notification| %>
                         <li>
                           <a>
-                              <%= notification.request %><br>
+                                <%= notification.request %><br>
                                 <%= notification.drive_user.name %><br>
                                 <%= notification.user.name %>
                           </a>

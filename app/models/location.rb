@@ -4,6 +4,11 @@ class Location < ApplicationRecord
   belongs_to :user
   has_many :notifications, dependent: :destroy
   before_save :geocode_endpoints
+  
+  validates :fromAddress, presence: true
+  validates :toAddress, presence: true
+  validates :day, presence: true
+  validates :time, presence: true
 
   private
 
