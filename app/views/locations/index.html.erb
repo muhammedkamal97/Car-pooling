@@ -2,13 +2,26 @@
 
 <h1>Locations</h1>
 
-<%= form_tag search_path, :method => :get do %>
+<%= form_tag search_path, :method => :post do %>
   <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search Near", :name => nil %>
+    <label>Start&emsp;&emsp;&emsp;</label>
+    <%= text_field_tag :starting, params[:starting], placeholder: "StartingPoint" %>
+    <br>
+    <label>Distnation</label>
+    <%= text_field_tag :heading, params[:heading], placeholder: "EndingPoint" %>
+    <br>
+    <%= submit_tag "Search Near", :name => nil, class: "btn btn-success btn-xs" %>
   </p>
 <% end %>
-
+<% if @nearlocation %>
+  <p>
+  yes
+  </p>
+  <% for loc in @nearlocation %>
+    <%= link_to loc.fromAddress, loc%> to <%= loc.toAddress %>
+    <br>
+  <% end %>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -46,6 +59,6 @@
   </tbody>
 </table>
 
-<br>
+<% end %>
 
 <%= link_to 'New Location', new_location_path %>

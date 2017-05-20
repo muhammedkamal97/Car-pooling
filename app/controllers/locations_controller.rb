@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  attr_accessor :nearlocation
   # GET /locations
   # GET /locations.json
   def index
@@ -15,12 +16,14 @@ class LocationsController < ApplicationController
   def accept_request
     notification = Notification.find(params[:respond])
     notification.update(request: 'accept')
+    notification.update(read: true)
     redirect_to current_user
   end
 
   def refuse_request
     notification = Notification.find(params[:respond])
     notification.update(request: 'refused')
+    notification.update(read: true)
     redirect_to current_user
   end
 
@@ -81,21 +84,42 @@ class LocationsController < ApplicationController
   end
 
   def search
-    location = Location.find_by(fromAddress: params[:search])
-    if location
-      $to_location = location
-      $flag = 1
-      debugger
-      redirect_to location
-    else 
-      location = Location.find_by(toAddress: params[:search])
-      if(location)
-        $to_location = location
-        $flag = 1
-        debugger
-        redirect_to location
+    if params[:heading]
+      heading = params[:heading]
+      head = Geocoder.coordinates(heading)
+      starting = params[:starting]
+      start = Geocoder.coordinates(starting)
+      searchinglocation = Location.new
+      geocoded = Geocoder.search(starting).first
+        if geocoded
+          searchinglocation.from_lat = geocoded.latitude
+          searchinglocation.from_long = geocoded.longitude
+        end
+      geocoded = Geocoder.search(heading).first
+        if geocoded
+          searchinglocation.to_lat = geocoded.latitude
+          searchinglocation.to_long = geocoded.longitude
+        end
+      @nearlocation = []
+
+      for loc in Location.all
+        locCOrdinates = Geocoder.coordinates(loc.fromAddress)
+        dis = Geocoder::Calculations.distance_between(start, locCOrdinates, {:units => :km})
+        if dis < 0.5
+          @nearlocation << loc
+        end
       end
+      for loc in @nearlocation
+        locCOrdinates = Geocoder.coordinates(loc.toAddress)
+        dis = Geocoder::Calculations.distance_between(head, locCOrdinates, {:units => :km})
+        if dis > 0.5
+          @nearlocation.delete(loc)
+        end
+      end
+      debugger
+      render :index
     end
+
   end
 
   private

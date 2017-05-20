@@ -22,23 +22,26 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Notification
                 <% if current_user.notifications %>
-                <%= current_user.notifications.count %>
+                <%= current_user.notifications.where(read: false).count %>
                 <% end %><b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                  <% current_user.notifications.each do |notification| %>
-                      <li>
-                        <a>
-                            <p><%= notification.request %></p>
-                              <%= notification.user.name %>
-                        </a>
-                      </li>
-                      <li> 
-                      <%= link_to("accept",acceptRequest_path(respond: notification)  , method: :post) %>
-                      <%= link_to("refuse",refuseRequest_path(respond: notification)  , method: :post) %> 
-                      </li>
+                  <% current_user.notifications.where(read: false).each do |notification| %>
+                        <li>
+                          <a>
+                              <p><%= notification.request %></p>
+                                <%= notification.user.name %>
+                          </a>
+                        </li>
+                        <li> 
+                        <%= link_to("accept",acceptRequest_path(respond: notification)  , method: :post) %>
+                        <%= link_to("refuse",refuseRequest_path(respond: notification)  , method: :post) %> 
+                        </li>
                       <li class="divider"></li>
                   <% end %>
+                  <li>
+                    <%= link_to("view all", viewALL_path) %>
+                  </li>
               </ul>
           </li>
           <li><%= link_to "Users", users_path %></li>

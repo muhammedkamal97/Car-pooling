@@ -10,28 +10,18 @@
   <div class="field">
     <%= f.label :day %>
     &emsp;
-    <select>
-  <option value="Saturday">Saturday</option>
-  <option value="Sunday">Sunday</option>
-  <option value="Monday">Monday</option>
-  <option value="Tuesday">Tuesday</option>
-  <option value="Wednesday">Wednesday</option>
-  <option value="Thursday">Thursday</option>
-  <option value="Friday">Friday</option>
-
-</select>
-    
+<%= f.select(:day, ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],{} ,{}) %>
   </div>
 
   <div class="field">
-    <%= f.label :From %>
-    <%= f.text_field :From %>
+    <%= f.label :fromAddress %>
+    <%= f.text_field :fromAddress %>
   </div>
   
   <div class="field">
-    <%= f.label :To %>
+    <%= f.label :toAddress %>
     &emsp;
-    <%= f.text_field :To %>
+    <%= f.text_field :toAddress %>
   </div>
 
   <div class="field">

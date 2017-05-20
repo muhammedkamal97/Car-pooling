@@ -1,0 +1,9 @@
+<h1>Your Notifications</h1>
+
+<% @notification.each do |note| %> 
+        <%= note.request %><br>
+        <%= note.user.name %>
+        <%= link_to("accept",acceptRequest_path(respond: note)  , method: :post) %>
+        <%= link_to("refuse",refuseRequest_path(respond: note)  , method: :post) %> 
+        <br><br>
+<% end %>
