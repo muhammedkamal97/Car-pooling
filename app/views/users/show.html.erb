@@ -4,39 +4,58 @@
 <div class="sub-section"></div>
 
 <div class="user">
-
-<%= form_for(:location, url: locate_path) do |f| %>
-<div class="new-place">
-  <div class="field">
-    <% if $checkTheLocation == 1 %>
-      <% $checkTheLocation = 0 %>
-      <label class="btn btn-danger">there are missing input</label><br><br>
+  <h1><%= current_user.name %></h1>
+  <h3>Member since <%= current_user.created_at.strftime("%Y-%m-%d") %></h3>
+  <% Location.where(user: current_user).each do |loc| %>
+  <p>
+    <%= loc.day %><br>
+    <%= loc.fromAddress %>&emsp; to <%= loc.toAddress %> moves at <%= loc.time %><br>
+    <% if loc.user == current_user %>
+          <%= link_to 'Destroy', loc, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-    <%= f.label :day %>
-    &emsp;
-<%= f.select(:day, ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],{} ,{}) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :fromAddress %>
-    <%= f.text_field :fromAddress %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :toAddress %>
-    &emsp;
-    <%= f.text_field :toAddress %>
-  </div>
-
-  <div class="field">
-    <%= f.label :time %>
-    <%= f.text_field :time %>
-  </div>
-
-  <br>
-  <div class="actions">
-    <%= f.submit "Add Location" %>
-  </div>
-  </div>
-  </div>
-<% end %>
+    </p>
+  <% end %>
+<dev class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">create new location<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li>
+      <div class="user">        
+        <%= form_for(:location, url: locate_path) do |f| %>
+        <div class="new-place">
+          <div class="field">
+            <% if $checkTheLocation == 1 %>
+              <% $checkTheLocation = 0 %>
+              <label class="btn btn-danger">there are missing input</label><br><br>
+            <% end %>
+            <%= f.label :day %>
+            &emsp;
+        <%= f.select(:day, ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],{} ,{}) %>
+          </div>
+        
+          <div class="field">
+            <%= f.label :fromAddress %>
+            <%= f.text_field :fromAddress %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :toAddress %>
+            &emsp;
+            <%= f.text_field :toAddress %>
+          </div>
+        
+          <div class="field">
+            <%= f.label :time %>
+            <%= f.text_field :time %>
+          </div>
+        
+          <br>
+          <div class="actions">
+            <%= f.submit "Add Location" %>
+          </div>
+          </div>
+          </div>          
+        <% end %>
+      </li>
+    </ul>
+</dev>
+</div>

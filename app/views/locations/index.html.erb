@@ -23,10 +23,13 @@
 <div class="loc-info">
 <% if @nearlocation %>
   <p>
-  yes
+  the near location to you
   </p>
   <% for loc in @nearlocation %>
-    <%= link_to loc.fromAddress, loc%> to <%= loc.toAddress %>
+    <%= link_to loc.fromAddress, loc%> to <%= loc.toAddress %>&emsp;
+    <%= loc.user %>&emsp;&emsp;
+    <%= loc.time %>&emsp;&emsp;
+    <%= loc.day %>
     <br>
   <% end %>
 <% else %>
@@ -61,7 +64,7 @@
         <td><%= link_to 'Edit', edit_location_path(location) %>&emsp;</td>
         <td><%= link_to 'pickup', pickup_path(loc: location) %>&emsp;</td>
         <% if location.user == current_user %>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

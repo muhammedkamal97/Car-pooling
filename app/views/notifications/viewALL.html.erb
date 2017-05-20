@@ -11,4 +11,5 @@
                 <%= link_to("refuse",refuseRequest_path(respond: notification)  , class: "btn btn-danger btn-xs") %> 
         <% end %>
         </p>
+        <% notification.update(read: true) %>
 <% end %>
