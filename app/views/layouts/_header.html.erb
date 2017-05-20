@@ -27,10 +27,10 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                  <% Notification.where(drive_user: current_user,read: false).or(Notification.where(user: current_user,read: false)).last(2).each do |notification| %>
+                  <% Notification.where(drive_user: current_user,read: false).or(Notification.where(user: current_user,read: false)).last(5).each do |notification| %>
                         <li>
                           <a>
-                              <p><%= notification.request %></p>
+                              <%= notification.request %><br>
                                 <%= notification.drive_user.name %><br>
                                 <%= notification.user.name %>
                           </a>
