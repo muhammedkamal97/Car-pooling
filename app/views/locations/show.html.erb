@@ -34,13 +34,10 @@
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.from_lat}%2C#{@location.from_long}" %>
 </div>
 <div class = "container">
-<h1>Nearby Locations</h1>
+<h1>another location</h1>
 <ul>
 <% for location in @location.nearbys(10) %>
-    <% if(distance(location, $to_location) && 
-          distance(location, $to_location) < 430 ) %>
       <li> <%= link_to location.fromAddress, location%>(<%= location.distance.round(2)%> miles)</li>
-    <% end %>
 <%end%>
 </ul>
 </div>

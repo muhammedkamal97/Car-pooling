@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   
 
+  get 'notifications/viewALL'
+
   resources :locations
 
   root 'users#new'
 
   get 'sessions/new'
   
-  get 'search' => 'locations#search'
+  post 'search' => 'locations#search'
 
   get 'static_pages/Welcome' =>'static_pages#Welcome'
 
@@ -17,10 +19,11 @@ Rails.application.routes.draw do
   get 'pickup' => 'locations#make_request'
   post 'acceptRequest' => 'locations#accept_request'
   post 'refuseRequest' => 'locations#refuse_request'
+  get 'viewALL' => 'notifications#viewALL'
+
   get    'login'  => 'sessions#new'
   post   'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-
 
 
   post   'locate' => 'locations#create'
