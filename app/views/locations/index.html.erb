@@ -61,7 +61,9 @@
         <td><%= location.time %></td>
         <td><%= location.user.name %></td>
         <td>&emsp;<%= link_to 'Show', location %>&emsp;</td>
-        <td><%= link_to 'Edit', edit_location_path(location) %>&emsp;</td>
+        <% if location.user == current_user %>
+          <td><%= link_to 'Edit', edit_location_path(location) %>&emsp;</td>
+        <% end %>
         <td><%= link_to 'pickup', pickup_path(loc: location) %>&emsp;</td>
         <% if location.user == current_user %>
           <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>

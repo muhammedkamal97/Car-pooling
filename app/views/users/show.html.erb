@@ -10,8 +10,11 @@
   <p>
     <%= loc.day %><br>
     <%= loc.fromAddress %>&emsp; to <%= loc.toAddress %> moves at <%= loc.time %><br>
+    <%= link_to 'Show', loc %>&emsp;
     <% if loc.user == current_user %>
           <%= link_to 'Destroy', loc, method: :delete, data: { confirm: 'Are you sure?' } %>
+          &emsp;
+          <%= link_to 'Edite',edit_location_path(loc) %>
     <% end %>
     </p>
   <% end %>
