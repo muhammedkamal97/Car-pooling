@@ -116,7 +116,6 @@ class LocationsController < ApplicationController
           @nearlocation.delete(loc)
         end
       end
-      debugger
       render :index
     end
 
@@ -138,7 +137,7 @@ class LocationsController < ApplicationController
     def create_notification (location)
         dr = location.user_id
         loc = location.id
-        us = current_user.id
+        us = current_user
         Notification.create(user: us,
                             drive_user_id: dr,
                             location_id: loc,

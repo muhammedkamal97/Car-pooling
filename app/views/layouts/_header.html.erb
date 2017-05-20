@@ -22,21 +22,25 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Notification
                 <% if current_user.notifications %>
-                <%= current_user.notifications.where(read: false).count %>
-                <% end %><b class="caret"></b>
+                <%= Notification.where(drive_user: current_user,read: false).count + Notification.where(user: current_user,read: false).count %>
+                <% end %>
+                <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                  <% current_user.notifications.where(read: false).each do |notification| %>
+                  <% Notification.where(drive_user: current_user,read: false).or(Notification.where(user: current_user,read: false)).last(2).each do |notification| %>
                         <li>
                           <a>
                               <p><%= notification.request %></p>
+                                <%= notification.drive_user.name %><br>
                                 <%= notification.user.name %>
                           </a>
                         </li>
+                        <% if current_user == notification.drive_user %>
                         <li> 
                         <%= link_to("accept",acceptRequest_path(respond: notification)  , method: :post) %>
                         <%= link_to("refuse",refuseRequest_path(respond: notification)  , method: :post) %> 
                         </li>
+                        <% end %>
                       <li class="divider"></li>
                   <% end %>
                   <li>

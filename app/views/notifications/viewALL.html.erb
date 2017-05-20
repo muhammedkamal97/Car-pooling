@@ -1,9 +1,14 @@
 <h1>Your Notifications</h1>
 
-<% @notification.each do |note| %> 
-        <%= note.request %><br>
-        <%= note.user.name %>
-        <%= link_to("accept",acceptRequest_path(respond: note)  , method: :post) %>
-        <%= link_to("refuse",refuseRequest_path(respond: note)  , method: :post) %> 
-        <br><br>
+<% Notification.where(drive_user: current_user).or(Notification.where(user: current_user)).each do |notification| %>
+        
+        <p><%= notification.request %><br>
+                 <%= notification.drive_user.name %><br>
+                 <%= notification.user.name %><br>
+                                         
+        <% if current_user == notification.drive_user %>
+                <%= link_to("accept",acceptRequest_path(respond: notification)  , class: "btn btn-success btn-xs") %>
+                <%= link_to("refuse",refuseRequest_path(respond: notification)  , class: "btn btn-danger btn-xs") %> 
+        <% end %>
+        </p>
 <% end %>
