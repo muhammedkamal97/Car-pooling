@@ -1,3 +1,8 @@
+<div class="sub-section"></div>
+<div class="sub-section"></div>
+<div class="sub-section"></div>
+
+<div class ="loc">
 <p id="notice"><%= notice %></p>
 
 <h1>Locations</h1>
@@ -6,13 +11,16 @@
   <p>
     <label>Start&emsp;&emsp;&emsp;</label>
     <%= text_field_tag :starting, params[:starting], placeholder: "StartingPoint" %>
-    <br>
+    <br><br>
     <label>Distnation</label>
     <%= text_field_tag :heading, params[:heading], placeholder: "EndingPoint" %>
-    <br>
+    <br><br>
     <%= submit_tag "Search Near", :name => nil, class: "btn btn-success btn-xs" %>
+    <br>
   </p>
 <% end %>
+<div class="sub-section"></div>
+<br>
 <% if @nearlocation %>
   <p>
   yes
@@ -50,9 +58,9 @@
         <td><%= location.to_long %></td>
         <td><%= location.time %></td>
         <td><%= location.user %></td>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'pickup', pickup_path(loc: location) %></td>
+        <td>&emsp;<%= link_to 'Show', location %>&emsp;</td>
+        <td><%= link_to 'Edit', edit_location_path(location) %>&emsp;</td>
+        <td><%= link_to 'pickup', pickup_path(loc: location) %>&emsp;</td>
         <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -62,3 +70,4 @@
 <% end %>
 
 <%= link_to 'New Location', new_location_path %>
+</div>

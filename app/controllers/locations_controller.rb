@@ -138,7 +138,7 @@ class LocationsController < ApplicationController
     def create_notification (location)
         dr = location.user_id
         loc = location.id
-        us = current_user
+        us = current_user.id
         Notification.create(user: us,
                             drive_user_id: dr,
                             location_id: loc,

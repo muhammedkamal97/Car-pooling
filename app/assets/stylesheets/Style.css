@@ -235,3 +235,12 @@ body{
 	  font-family: 'Rancho',cursive;
 
 }
+.loc{
+		padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 20px;
+  color: black;
+  font-family: 'Rancho',cursive;
+}

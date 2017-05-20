@@ -36,7 +36,7 @@
 <div class = "container">
 <h1>another location</h1>
 <ul>
-<% for location in @location.nearbys(10) %>
+<% for location in @location.nearbys(1) %>
       <li> <%= link_to location.fromAddress, location%>(<%= location.distance.round(2)%> miles)</li>
 <%end%>
 </ul>
