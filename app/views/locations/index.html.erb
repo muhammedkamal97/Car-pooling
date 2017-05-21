@@ -27,7 +27,7 @@
   </p>
   <% for loc in @nearlocation %>
     <%= link_to loc.fromAddress, loc%> to <%= loc.toAddress %>&emsp;
-    <%= loc.user %>&emsp;&emsp;
+    <%= loc.user.name %>&emsp;&emsp;
     <%= loc.time %>&emsp;&emsp;
     <%= loc.day %>
     <br>
@@ -76,5 +76,5 @@
  
 <% end %>
 <br>
-<%= link_to 'New Location', new_location_path %>
+<%= link_to 'New Location', current_user %>
 </div></div>
